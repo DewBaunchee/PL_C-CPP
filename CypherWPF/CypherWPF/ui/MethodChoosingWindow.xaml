@@ -1,0 +1,26 @@
+﻿<Window x:Class="CypherWPF.MethodChoosingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CypherWPF"
+        mc:Ignorable="d"
+        Title="Method choosing" Height="176.667" Width="331.667" Icon="choice.png" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Grid>
+        <Border HorizontalAlignment="Left" Height="70
+                " Margin="0,69,0,0" VerticalAlignment="Top" Width="319" Background="#FFE2E2E2" BorderBrush="#FF8D8D8D" BorderThickness="0,1,0,0" >
+            <Grid>
+                <Label Content="Encryption method:" Margin="32,5,174,28"/>
+                <ComboBox x:Name="MethodCBox" Margin="150,7,0,42" HorizontalAlignment="Left" Width="159" SelectedIndex="0" IsReadOnly="True">
+                    <ComboBoxItem Content="XOR"/>
+                    <ComboBoxItem Content="Caesar"/>
+                </ComboBox>
+                <Button x:Name="CancelBtn" Content="Cancel" Margin="234,32,10,10" Width="75" Click="CancelBtn_Click"/>
+                <Button x:Name="ConfirmBtn" Content="Confirm" Margin="150,32,94,10" Width="75" Click="ConfirmBtn_Click"/>
+            </Grid>
+        </Border>
+        <Label Content="Choose encryption method for text files" HorizontalAlignment="Left" VerticalAlignment="Top" Height="69" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="8,0,0,0" FontSize="14"/>
+        <Image HorizontalAlignment="Left" Height="38" Margin="268,17,0,0" VerticalAlignment="Top" Width="45" Source="questionIcon.png"/>
+
+    </Grid>
+</Window>

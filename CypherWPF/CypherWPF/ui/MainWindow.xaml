@@ -1,0 +1,106 @@
+﻿<Window x:Class="CypherWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CypherWPF"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="266" Width="446" ResizeMode="CanMinimize" Icon="mainLock.png" HorizontalAlignment="Center" VerticalAlignment="Center" Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MainWindow.Exit" Executed="MMExit_Click"/>
+        <CommandBinding Command="local:MainWindow.Open" Executed="MMOpen_Click"/>
+        <CommandBinding Command="local:MainWindow.Save" Executed="MMSave_Click"/>
+        <CommandBinding Command="local:MainWindow.Encrypt" Executed="MMEncrypt_Click"/>
+        <CommandBinding Command="local:MainWindow.Decrypt" Executed="MMDecrypt_Click"/>
+        <CommandBinding Command="local:MainWindow.GenerateKey" Executed="MMGenerate_Click"/>
+        <CommandBinding Command="local:MainWindow.CopyKey" Executed="MMCopyKey_Click"/>
+        <CommandBinding Command="local:MainWindow.ChooseMethod" Executed="MMMethod_Click"/>
+        <CommandBinding Command="local:MainWindow.Help" Executed="MMHelp_Click"/>
+        <CommandBinding Command="local:MainWindow.HotKeys" Executed="MMHotKeys_Click"/>
+        <CommandBinding Command="local:MainWindow.AboutProgram" Executed="MMAboutProgram_Click"/>
+        <CommandBinding Command="local:MainWindow.AboutAuthor" Executed="MMAboutAuthor_Click"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="local:MainWindow.Exit" Key="Esc"/>
+        <KeyBinding Command="local:MainWindow.Open" Gesture="Alt+O"/>
+        <KeyBinding Command="local:MainWindow.Save" Gesture="Alt+S"/>
+        <KeyBinding Command="local:MainWindow.Encrypt" Gesture="Alt+E"/>
+        <KeyBinding Command="local:MainWindow.Decrypt" Gesture="Alt+D"/>
+        <KeyBinding Command="local:MainWindow.GenerateKey" Gesture="Alt+G"/>
+        <KeyBinding Command="local:MainWindow.CopyKey" Gesture="Alt+C"/>
+        <KeyBinding Command="local:MainWindow.ChooseMethod" Gesture="Alt+M"/>
+        <KeyBinding Command="local:MainWindow.Help" Gesture="Alt+H"/>
+        <KeyBinding Command="local:MainWindow.HotKeys" Gesture="Alt+K"/>
+        <KeyBinding Command="local:MainWindow.AboutProgram" Gesture="Alt+P"/>
+        <KeyBinding Command="local:MainWindow.AboutAuthor" Gesture="Alt+A"/>
+    </Window.InputBindings> 
+    <Grid Background="#FFAACBE9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="MainMenu" Height="20" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem x:Name="MMFile" Header="File">
+                <MenuItem x:Name="MMOpen" Header="Open..." InputGestureText="Alt+O" Command="local:MainWindow.Open"/>
+                <MenuItem x:Name="MMSave" Header="Save..." InputGestureText="Alt+S" Command="local:MainWindow.Save"/>
+                <Separator />
+                <MenuItem x:Name="MMExit" Header="Exit" InputGestureText="Esc" Command="local:MainWindow.Exit"/>
+            </MenuItem>
+            <MenuItem x:Name="MMControl" Header="Control">
+                <MenuItem x:Name="MMEncrypt" Header="Encrypt" IsEnabled="False" InputGestureText="Alt+E" Command="local:MainWindow.Encrypt"/>
+                <MenuItem x:Name="MMDecrypt" Header="Decrypt" IsEnabled="False" InputGestureText="Alt+D" Command="local:MainWindow.Decrypt"/>
+                <Separator/>
+                <MenuItem x:Name="MMGenerate" Header="Generate key" InputGestureText="Alt+G" Command="local:MainWindow.GenerateKey"/>
+                <MenuItem x:Name="MMCopyKey" Header="Copy key" InputGestureText="Alt+C" Command="local:MainWindow.CopyKey"/>
+                <MenuItem x:Name="MMMethod" Header="Choose method" InputGestureText="Alt+M" Command="local:MainWindow.ChooseMethod"/>
+            </MenuItem>
+            <MenuItem x:Name="MMAbout" Header="About">
+                <MenuItem x:Name="MMHelp" Header="Help" InputGestureText="Alt+H" Command="local:MainWindow.Help"/>
+                <MenuItem x:Name="MMHotKeys" Header="Hot keys" InputGestureText="Alt+K" Command="local:MainWindow.HotKeys"/>
+                <Separator/>
+                <MenuItem x:Name="MMAboutProgram" Header="About program" InputGestureText="Alt+P" Command="local:MainWindow.AboutProgram"/>
+                <MenuItem x:Name="MMAboutAuthor" Header="About author" InputGestureText="Alt+A" Command="local:MainWindow.AboutAuthor"/>
+            </MenuItem>
+        </Menu>
+        <Rectangle Fill="#FFB8B8B8" HorizontalAlignment="Left" Height="65" Margin="-9,171,-7,0" Stroke="#FF5D5D5D" VerticalAlignment="Top" Width="456" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFC7C8CC" HorizontalAlignment="Left" Height="27" Margin="8,39,0,0" Stroke="#FF4A4A4A" VerticalAlignment="Top" Width="302" RadiusX="8" RadiusY="8" Grid.Column="1"/>
+        <TextBox x:Name="BrowseTextBox" HorizontalAlignment="Left" Height="27" Margin="30,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12" Padding="4" BorderBrush="#FF656565" Grid.Column="1"/>
+        <Rectangle Fill="#FFC7C8CC" HorizontalAlignment="Left" Height="27" Margin="8,87,0,0" Stroke="#FF4A4A4A" VerticalAlignment="Top" Width="302" RadiusX="8" RadiusY="8" Grid.Column="1"/>
+        <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="27" Margin="30,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" FontSize="12" Padding="4" BorderBrush="#FF656565" Grid.Column="1"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="30,87,0,0" VerticalAlignment="Top" Width="254" Height="27" FontSize="12" Padding="4" BorderBrush="#FF656565" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged" Loaded="PasswordBox_Loaded"/>
+        <Button x:Name="BrowseBtn" Content="Browse..." Command="local:MainWindow.Open"  Grid.Column="1" HorizontalAlignment="Left" Margin="320,39,0,0" VerticalAlignment="Top" Width="104" Height="27" FontFamily="GOST Common" FontSize="15"/>
+        <Button x:Name="GenerateBtn" Command="local:MainWindow.GenerateKey" Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="320,87,0,0" VerticalAlignment="Top" Width="104" Height="27" FontFamily="GOST Common" FontSize="15"/>
+        <Button x:Name="MethodBtn" Content="Method" Command="local:MainWindow.ChooseMethod" Grid.Column="1" HorizontalAlignment="Left" Margin="320,120,0,0" VerticalAlignment="Top" Width="104" Height="39" FontFamily="GOST Common" FontSize="20"/>
+        <Button x:Name="EncryptBtn" Command="local:MainWindow.Encrypt" HorizontalAlignment="Left" Margin="8,120,0,0" VerticalAlignment="Top" Width="138" Height="39" FontFamily="GOST Common" FontSize="20" Grid.Column="1">
+            <StackPanel Height="28" Width="116" Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" Height="18" Margin="0,5,0,0" VerticalAlignment="Top" Width="15" Source="lockClose.png"/>
+                <Label Content="  Encrypt" HorizontalAlignment="Left" Width="88" Margin="0,-3,0,-4"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="DecryptBtn" Command="local:MainWindow.Decrypt" HorizontalAlignment="Left" Margin="172,120,0,0" VerticalAlignment="Top" Width="138" Height="39" FontFamily="GOST Common" FontSize="20" Grid.Column="1">
+            <StackPanel Height="26" Width="116" Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" Height="18" Margin="0,5,0,0" VerticalAlignment="Top" Width="15" Source="lockOpen.png"/>
+                <Label Content="  Decrypt" HorizontalAlignment="Left" Width="88" Margin="0,-3,0,-8"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ExitBtn" HorizontalAlignment="Left" Margin="303,177,0,0" VerticalAlignment="Top" Width="121" Height="46" FontFamily="GOST Common" FontSize="20" Grid.Column="1" Command="local:MainWindow.Exit">
+            <StackPanel Height="32" Width="93" Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" Width="30" Source="exit.png"/>
+                <Label Content="Exit" HorizontalAlignment="Left" Width="45" Margin="0,-3,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="HelpBtn" HorizontalAlignment="Left" Margin="8,177,0,0" VerticalAlignment="Top" Width="121" Height="46" FontFamily="GOST Common" FontSize="20" Grid.Column="1" Command="local:MainWindow.Help">
+            <StackPanel Height="32" Width="93" Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" Width="30" Source="help.png"/>
+                <Label Content="Help" HorizontalAlignment="Left" Width="48" Margin="0,-3,0,0"/>
+            </StackPanel>
+        </Button>
+        <Label x:Name="HintLabel" Content="Label" HorizontalAlignment="Left" Margin="140,184,0,0" VerticalAlignment="Top" Width="150" Height="33" Grid.Column="1" OpacityMask="Black" HorizontalContentAlignment="Center" Opacity="0" FontSize="14"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="11,43,0,0" VerticalAlignment="Top" Width="19" Source="folder.png" Grid.Column="1" Cursor="Hand" MouseLeftButtonDown="MMOpen_Click"/>
+        <Image HorizontalAlignment="Left" Height="22" Margin="9,90,0,0" VerticalAlignment="Top" Width="21" Source="3643767-key-keys-main-password-privilege_113429.png" Grid.Column="1" Cursor="Hand" MouseLeftButtonDown="MMCopyKey_Click"/>
+        <Rectangle Grid.Column="1" Fill="White" HorizontalAlignment="Left" Height="27" Margin="283,87,0,0" Stroke="#FF4A4A4A" VerticalAlignment="Top" Width="27"/>
+        <Image x:Name="EyeOpen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="284,88,0,0" VerticalAlignment="Top" Width="25" Source="eye_open.png" Cursor="Hand" MouseLeftButtonDown="EyeOpen_MouseLeftButtonDown"/>
+        <Image x:Name="EyeClose" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="284,88,0,0" VerticalAlignment="Top" Width="25" Source="eye_close.png" Cursor="Hand" MouseLeftButtonDown="EyeClose_MouseLeftButtonDown"/>
+    </Grid>
+</Window>
